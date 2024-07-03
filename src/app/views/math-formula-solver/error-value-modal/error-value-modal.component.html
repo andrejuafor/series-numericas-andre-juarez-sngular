@@ -1,0 +1,29 @@
+<div class="modal">
+  <div class="modal__box">
+    <div class="modal__header">
+      <h2>
+        ¡Ups!
+      </h2>
+      <div class="close-modal--wrapper">
+        <i 
+          class="fas fa-times"
+          (click)="closeModal()">
+        </i>
+      </div>
+    </div>
+    <div class="modal--body">
+      <p>
+        Aún no podemos calcular el valor que intentas ingresar, te recomendamos hacer pruebas entre los valores 0 y 10.
+      </p>
+    </div>
+    <div class="modal--footer">
+      <div>
+        <button
+          class="btn btn--bright-blue"
+          (click)="closeModal()">
+          ¡Entendido!
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

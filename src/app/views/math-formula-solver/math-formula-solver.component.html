@@ -1,0 +1,60 @@
+<div class="math-solver__background">
+  <div class="math-solver__modal">
+    <div class="modal__title--wrapper">
+      <h2>
+        ¡Bienvenido/a!
+      </h2>
+    </div>
+    <div class="modal__legend--wrapper">
+      <p>
+        En esta ocasión, estaremos utilizando las siguientes series numéricas: <strong>Número primo</strong>, <strong>Sucesión de Fibonacci</strong> y <strong>Número triangular</strong> para definir el término <strong class="italic-font">'n'</strong> de la serie a continuación:
+      </p>
+    </div>
+    <div class="modal__serie--wrapper">
+      <p class="italic-font">
+        serie(n) = 2triangular(n + 1) - 2primo(n) + fibonacci(n + 1)
+      </p>
+    </div>
+    <div 
+      class="modal__form--wrapper" 
+      [formGroup]="checkoutForm" 
+      *ngIf="!showSerieResult">
+      <label class="modal__form--label">
+        Introduce tu valor de <strong class="italic-font">'n'</strong>*:
+      </label>
+      <div class="modal__form--input">
+        <input 
+          type="text" 
+          class="form-input"
+          formControlName="n_value" 
+          placeholder="Ej. 1, 5, 10"
+          (keypress)="keyPressNumbers($event);"
+          (keyup)="validateEnteredNumber($event);" 
+          [class.is-invalid]="isControlInvalid('n_value')"
+          [class.is-valid]="isControlValid('n_value')">
+      </div>
+    </div>
+    <div 
+      class="modal__form--wrapper result" 
+      *ngIf="showSerieResult">
+      <p class="italic-font">
+        serie({{ checkoutForm.get('n_value')?.value }}) = {{ serieResult }}
+      </p>
+    </div>
+    <div class="modal__footer--wrapper">
+      <button 
+        class="btn btn--bright-blue btn-calculate"
+        *ngIf="!showSerieResult"
+        (click)="validateCheckout();">
+        Calcular
+      </button>
+      <button 
+        class="btn btn--bright-blue"
+        (click)="resetForm();"
+        *ngIf="showSerieResult">
+        Calcular otro numero
+      </button>
+    </div>
+  </div>
+</div>
+<app-error-value-modal *ngIf="showErrorValueModal"></app-error-value-modal>
